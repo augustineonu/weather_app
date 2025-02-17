@@ -28,18 +28,18 @@ class _AnimatedWeatherIconState extends State<AnimatedWeatherIcon>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        var icon = Icon(
+        var icon = Image.asset(
           // _getWeatherIcon(),
           widget.condition.toLowerCase().contains('sunny')
-              ? Icons.wb_sunny
+              ? "assets/gif/icons8-sunrise.gif"
               : widget.condition.toLowerCase().contains('rainy')
-                  ? Icons.water_drop
+                  ? "assets/gif/icons8-rain.gif"
                   : widget.condition.toLowerCase().contains('cloudy')
-                      ? Icons.cloud
-                      : Icons.wb_sunny,
+                      ? "assets/gif/icons8-partly-cloudy-day.gif"
+                      : "assets/gif/icons8-windy-weather.gif",
 
-          size: 50,
-          color: Colors.white,
+          height: 50,
+          // color: Colors.white,
         );
         return Transform.rotate(
           angle: _controller.value * 2 * 3.14,
@@ -47,19 +47,6 @@ class _AnimatedWeatherIconState extends State<AnimatedWeatherIcon>
         );
       },
     );
-  }
-
-  IconData _getWeatherIcon() {
-    switch (widget.condition.toLowerCase()) {
-      case 'sunny':
-        return Icons.wb_sunny;
-      case 'rainy':
-        return Icons.water_drop;
-      case 'cloudy':
-        return Icons.cloud;
-      default:
-        return Icons.wb_sunny;
-    }
   }
 
   @override

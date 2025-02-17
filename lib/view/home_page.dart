@@ -62,9 +62,21 @@ class HomePage extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 Text(
-                                  '${controller.weatherData['current']['temp_c']}°C',
+                                  controller.weatherData['current']['condition']
+                                          ['text'] ??
+                                      'sunny',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 20),
+                                Text(
+                                  'Feels like ${controller.weatherData['current']['temp_c']}°C',
                                   style: const TextStyle(
-                                    fontSize: 48,
+                                    fontSize: 28,
                                     color: Colors.white,
                                   ),
                                   textAlign: TextAlign.center,
@@ -73,12 +85,12 @@ class HomePage extends StatelessWidget {
                                 const Text(
                                   'Hourly Forecast',
                                   style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 18,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const SizedBox(height: 70),
+                                const SizedBox(height: 40),
                                 HourlyForecastGraph(
                                   hourlyData: controller.hourlyForecast,
                                 ),

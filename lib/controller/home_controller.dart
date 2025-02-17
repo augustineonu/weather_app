@@ -50,6 +50,7 @@ class HomeController extends GetxController {
   }
 
   void updateLocation(String newLocation) {
+    if (newLocation.isEmpty) return;
     currentLocation.value = newLocation;
     fetchWeatherData();
   }
